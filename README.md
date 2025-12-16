@@ -1,4 +1,4 @@
-# 🧠 Multi-Layer Cache System  
+# Multi-Layer Cache System  
 **FastAPI • Redis • Docker**
 
 This project implements a **multi-layer caching system** similar to what is used in real-world backend systems to improve performance and reduce load on slow data sources.
@@ -7,7 +7,7 @@ The application is built using **FastAPI**, **Redis**, and **Docker**, and demon
 
 ---
 
-## ✨ Key Features
+### Key Features
 
 - FastAPI backend running inside Docker
 - **L1 Cache**: Custom in-memory **LRU (Least Recently Used)** cache  
@@ -20,7 +20,7 @@ The application is built using **FastAPI**, **Redis**, and **Docker**, and demon
 
 ---
 
-## 🏗️ Architecture Overview
+### Architecture Overview
 
 Client Request
 ↓
@@ -37,8 +37,8 @@ Oracle (Slow Data Source)
 
 ---
 
-## 📁 Project Structure
-
+### Project Structure
+```
 multi-layer-cache/
 │
 ├── Dockerfile
@@ -53,10 +53,10 @@ multi-layer-cache/
 ├── l1_cache.py # Custom LRU cache (L1)
 ├── metrics.py # Cache metrics tracking
 └── lock.py # Cache stampede protection
-
+```
 ---
 
-## 🧩 Caching Layers Explained
+## Caching Layers Explained
 
 ### 🔹 L1 Cache (Custom LRU)
 - Stored in application memory
@@ -76,7 +76,7 @@ multi-layer-cache/
 
 ---
 
-## 🔒 Cache Stampede Protection
+## Cache Stampede Protection
 
 When multiple requests ask for the same key at the same time:
 - A **Redis lock** is used
@@ -88,7 +88,7 @@ This prevents unnecessary load on the slow data source.
 
 ---
 
-## 📊 Metrics
+## Metrics
 
 The application exposes cache performance metrics.
 
@@ -103,6 +103,7 @@ GET /metrics
   "cache_misses": 1,
   "l1_evictions": 0
 }
+```
 Metric Meaning
 
 l1_hits → Requests served from L1 cache
@@ -112,54 +113,49 @@ l2_hits → Requests served from Redis
 cache_misses → Oracle calls
 
 l1_evictions → LRU evictions
-📖 API Documentation (Swagger UI)
+### API Documentation (Swagger UI)
 
 FastAPI automatically provides interactive API documentation.
 
 Swagger UI:
-
+```
 http://localhost:8000/docs
-
+```
 
 ReDoc:
-
+```
 http://localhost:8000/redoc
-
+```
 
 These pages allow you to test all endpoints directly from the browser.
-▶️ How to Run the Project
-1️⃣ Navigate to the project folder
+How to Run the Project
+1️. Navigate to the project folder
 cd multi-layer-cache
 
-2️⃣ Build and start the application
+2️. Build and start the application
 docker compose build --no-cache
 docker compose up
 
-🧪 API Usage Examples
+### API Usage Examples
 Health check
+```
 curl http://localhost:8000/
-
+```
 Fetch data
+```
 curl http://localhost:8000/data/test
-
+```
 
 First request → slow (Oracle)
 
 Second request → fast (cache)
 
 View metrics
+```
 curl http://localhost:8000/metrics
+```
 
-✅ Verification Checklist
-
-✔ Docker containers start without errors
-✔ /data/{key} returns data correctly
-✔ Cached requests are faster
-✔ /metrics shows valid values
-✔ LRU eviction works
-✔ Stampede protection prevents duplicate Oracle calls
-
-🧠 What I Learned
+### What I Learned
 
 Designing multi-layer cache architectures
 
@@ -173,7 +169,8 @@ Observing system behavior using metrics
 
 Running backend services using Docker
 
-📌 Conclusion
+## Conclusion
 
 This project demonstrates a real-world inspired backend caching system with performance optimization, observability, and fault-prevention mechanisms.
-It is fully functional, well-structured, and ready for submission.
+
+
