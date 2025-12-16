@@ -85,9 +85,9 @@ This prevents unnecessary load on the slow data source.
 The application exposes cache performance metrics.
 
 ### Endpoint
-**GET /metrics**
+GET /metrics
 
-### Example Response
+#### Example Response
 ```json
 {
   "l1_hits": 1,
@@ -168,6 +168,7 @@ Running backend services using Docker
 ## Conclusion
 
 This project demonstrates a real-world inspired backend caching system with performance optimization, observability, and fault-prevention mechanisms.
+
 
 
 
