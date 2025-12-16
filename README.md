@@ -21,15 +21,7 @@ The application is built using **FastAPI**, **Redis**, and **Docker**, and demon
 ---
 
 ### Architecture Overview
-
-Client Request
-↓
-L1 Cache (In-Memory LRU)
-↓ (miss)
-L2 Cache (Redis)
-↓ (miss)
-Oracle (Slow Data Source)
-
+![Multi-Layer Cache Architecture](architecture.png)
 - L1 cache provides the fastest access
 - Redis acts as shared cache with expiration
 - Oracle is accessed only when both caches miss
@@ -45,7 +37,7 @@ multi-layer-cache/
 ├── docker-compose.yml
 ├── requirements.txt
 ├── README.md
-│
+├── architecture.png
 └── app/
 ├── main.py # FastAPI application
 ├── oracle.py # Simulated slow data source
@@ -58,18 +50,18 @@ multi-layer-cache/
 
 ## Caching Layers Explained
 
-### 🔹 L1 Cache (Custom LRU)
+### L1 Cache (Custom LRU)
 - Stored in application memory
 - Limited capacity
 - Uses dictionary + doubly linked list
 - Automatically evicts least recently used items
 
-### 🔹 L2 Cache (Redis)
+### L2 Cache (Redis)
 - Stores cached data with TTL (30 seconds)
 - Shared across requests
 - Reduces load on slow backend
 
-### 🔹 Oracle (Simulated)
+### Oracle (Simulated)
 - Represents a slow database
 - Implemented using `time.sleep(2)`
 - Accessed only on cache misses
@@ -93,7 +85,7 @@ This prevents unnecessary load on the slow data source.
 The application exposes cache performance metrics.
 
 ### Endpoint
-GET /metrics
+**GET /metrics**
 
 ### Example Response
 ```json
@@ -104,7 +96,7 @@ GET /metrics
   "l1_evictions": 0
 }
 ```
-Metric Meaning
+**Metric Meaning**
 
 l1_hits → Requests served from L1 cache
 
@@ -117,12 +109,12 @@ l1_evictions → LRU evictions
 
 FastAPI automatically provides interactive API documentation.
 
-Swagger UI:
+**Swagger UI:**
 ```
 http://localhost:8000/docs
 ```
 
-ReDoc:
+**ReDoc:**
 ```
 http://localhost:8000/redoc
 ```
@@ -130,12 +122,14 @@ http://localhost:8000/redoc
 These pages allow you to test all endpoints directly from the browser.
 How to Run the Project
 1️. Navigate to the project folder
+```
 cd multi-layer-cache
-
+```
 2️. Build and start the application
+```
 docker compose build --no-cache
 docker compose up
-
+```
 ### API Usage Examples
 Health check
 ```
@@ -172,5 +166,6 @@ Running backend services using Docker
 ## Conclusion
 
 This project demonstrates a real-world inspired backend caching system with performance optimization, observability, and fault-prevention mechanisms.
+
 
 
