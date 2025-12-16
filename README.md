@@ -150,7 +150,7 @@ View metrics
 ```
 curl http://localhost:8000/metrics
 ```
-
+---
 ### What I Learned
 
 Designing multi-layer cache architectures
@@ -164,10 +164,11 @@ Preventing cache stampede issues
 Observing system behavior using metrics
 
 Running backend services using Docker
-
+---
 ## Conclusion
 
 This project demonstrates a real-world inspired backend caching system with performance optimization, observability, and fault-prevention mechanisms.
+
 
 
 
