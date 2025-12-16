@@ -1,5 +1,5 @@
 # Multi-Layer Cache System  
-**FastAPI • Redis • Docker**
+**FastAPI . Redis . Docker**
 
 This project implements a **multi-layer caching system** similar to what is used in real-world backend systems to improve performance and reduce load on slow data sources.
 
@@ -105,6 +105,7 @@ l2_hits → Requests served from Redis
 cache_misses → Oracle calls
 
 l1_evictions → LRU evictions
+
 ### API Documentation (Swagger UI)
 
 FastAPI automatically provides interactive API documentation.
@@ -120,8 +121,9 @@ http://localhost:8000/redoc
 ```
 
 These pages allow you to test all endpoints directly from the browser.
-How to Run the Project
+How to Run the Project 
 1️. Navigate to the project folder
+
 ```
 cd multi-layer-cache
 ```
@@ -166,6 +168,7 @@ Running backend services using Docker
 ## Conclusion
 
 This project demonstrates a real-world inspired backend caching system with performance optimization, observability, and fault-prevention mechanisms.
+
 
 
 
