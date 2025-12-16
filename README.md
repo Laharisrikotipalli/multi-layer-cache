@@ -165,10 +165,12 @@ Preventing cache stampede issues
 Observing system behavior using metrics
 
 Running backend services using Docker
+
 ---
 ## Conclusion
 
 This project demonstrates a real-world inspired backend caching system with performance optimization, observability, and fault-prevention mechanisms.
+
 
 
 
