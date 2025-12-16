@@ -21,7 +21,8 @@ The application is built using **FastAPI**, **Redis**, and **Docker**, and demon
 ---
 
 ### Architecture Overview
-![Multi-Layer Cache Architecture](architecture.png)
+!![Architecture](images/architecture.png)
+
 - L1 cache provides the fastest access
 - Redis acts as shared cache with expiration
 - Oracle is accessed only when both caches miss
