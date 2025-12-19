@@ -10,6 +10,7 @@ L1 Cache (in-memory, custom LRU)
 L2 Cache (Redis with TTL)
 
 Oracle Simulation (slow backend)
+
 ---
 
 ### Key Features
@@ -177,6 +178,7 @@ Running backend services using Docker
 ## Conclusion
 
 This project demonstrates a real-world inspired backend caching system with performance optimization, observability, and fault-prevention mechanisms.
+
 
 
 
