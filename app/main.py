@@ -20,13 +20,13 @@ def root():
     return {"message": "Multi-layer cache service running"}
 @app.get("/data/{key}")
 def get_data(key: str):
-    # 1️⃣ Check L1 Cache
+    # 1️ Check L1 Cache
     l1_data = l1_cache.get(key)
     if l1_data:
         metrics.l1_hits += 1
         return l1_data
 
-    # 2️⃣ Check Redis (L2 Cache)
+    # 2️ Check Redis (L2 Cache)
     cached_data = redis_client.get(key)
     if cached_data:
         metrics.l2_hits += 1
@@ -34,7 +34,7 @@ def get_data(key: str):
         l1_cache.put(key, data)
         return data
 
-    # 3️⃣ Cache miss → Try Redis lock
+    # 3️ Cache miss → Try Redis lock
     acquired, lock_key = acquire_lock(redis_client, key)
 
     if acquired:
@@ -48,7 +48,7 @@ def get_data(key: str):
         redis_client.delete(lock_key)
         return data
 
-    # 4️⃣ Non-leader → Wait for cache
+    # 4️ Non-leader → Wait for cache
     cached_data = wait_for_cache(redis_client, key)
     if cached_data:
         metrics.l2_hits += 1
@@ -56,11 +56,15 @@ def get_data(key: str):
         l1_cache.put(key, data)
         return data
 
-    # 5️⃣ Fallback (very rare)
+    # 5️ Fallback (very rare)
     metrics.cache_misses += 1
     return fetch_from_oracle(key)
+
 @app.get("/metrics")
 def get_metrics():
     return metrics.to_dict()
+@app.get("/health")
+def health():
+    return {"status": "ok"}
 
 

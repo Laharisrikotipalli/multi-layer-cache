@@ -21,7 +21,7 @@ The application is built using **FastAPI**, **Redis**, and **Docker**, and demon
 ---
 
 ### Architecture Overview
-!![Architecture](images/architecture.png)
+[Architecture](images/architecture.png)
 
 - L1 cache provides the fastest access
 - Redis acts as shared cache with expiration

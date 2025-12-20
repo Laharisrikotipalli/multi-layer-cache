@@ -1,3 +1,4 @@
+from app.metrics import metrics
 class Node:
     def __init__(self, key, value):
         self.key = key
@@ -63,3 +64,4 @@ class LRUCache:
             if len(self.cache) > self.capacity:
                 tail = self._pop_tail()
                 del self.cache[tail.key]
+                metrics.l1_evictions += 1
