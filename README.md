@@ -1,9 +1,15 @@
 # Multi-Layer Cache System  
 **FastAPI . Redis . Docker**
 
-This project implements a **multi-layer caching system** similar to what is used in real-world backend systems to improve performance and reduce load on slow data sources.
+This project implements a ***multi-layer caching system*** inspired by real-world backend architectures to improve performance and reduce load on slow data sources.
 
-The application is built using **FastAPI**, **Redis**, and **Docker**, and demonstrates how **L1 (in-memory)** and **L2 (Redis)** caches work together with a slow backend (Oracle simulation).
+The system uses:
+
+L1 Cache (in-memory, custom LRU)
+
+L2 Cache (Redis with TTL)
+
+Oracle Simulation (slow backend)
 
 ---
 
@@ -12,7 +18,7 @@ The application is built using **FastAPI**, **Redis**, and **Docker**, and demon
 - FastAPI backend running inside Docker
 - **L1 Cache**: Custom in-memory **LRU (Least Recently Used)** cache  
   *(implemented from scratch, no libraries used)*
-- **L2 Cache**: Redis with TTL support
+- **L2 Cache**: Redis with TTL (30 seconds)
 - **Slow Data Source**: Oracle simulation using artificial delay
 - **Cache Metrics**: Tracks hits, misses, and evictions
 - **Cache Stampede Protection** using Redis locks
@@ -21,7 +27,9 @@ The application is built using **FastAPI**, **Redis**, and **Docker**, and demon
 ---
 
 ### Architecture Overview
+<<<<<<< HEAD
 [Architecture](images/architecture.png)
+=======
 
 - L1 cache provides the fastest access
 - Redis acts as shared cache with expiration
@@ -38,7 +46,8 @@ multi-layer-cache/
 ├── docker-compose.yml
 ├── requirements.txt
 ├── README.md
-├── architecture.png
+├── images/
+│   └── architecture.png
 └── app/
 ├── main.py # FastAPI application
 ├── oracle.py # Simulated slow data source
@@ -58,7 +67,7 @@ multi-layer-cache/
 - Automatically evicts least recently used items
 
 ### L2 Cache (Redis)
-- Stores cached data with TTL (30 seconds)
+- Redis caches data with a TTL of 30 seconds.
 - Shared across requests
 - Reduces load on slow backend
 
@@ -94,7 +103,7 @@ GET /metrics
   "l1_hits": 1,
   "l2_hits": 1,
   "cache_misses": 1,
-  "l1_evictions": 0
+  "l1_evictions": 1
 }
 ```
 **Metric Meaning**
@@ -137,11 +146,11 @@ docker compose up
 ### API Usage Examples
 Health check
 ```
-curl http://localhost:8000/
+curl http://localhost:8000/health
 ```
 Fetch data
 ```
-curl http://localhost:8000/data/test
+curl http://localhost:8000/data/testkey
 ```
 
 First request → slow (Oracle)
@@ -171,6 +180,10 @@ Running backend services using Docker
 ## Conclusion
 
 This project demonstrates a real-world inspired backend caching system with performance optimization, observability, and fault-prevention mechanisms.
+
+
+
+
 
 
 
