@@ -27,7 +27,7 @@ Oracle Simulation (slow backend)
 ---
 
 ### Architecture Overview
-[Architecture](images/architecture.png)
+(images/architecture.png)
 =======
 
 - L1 cache provides the fastest access
@@ -179,6 +179,7 @@ Running backend services using Docker
 ## Conclusion
 
 This project demonstrates a real-world inspired backend caching system with performance optimization, observability, and fault-prevention mechanisms.
+
 
 
 
