@@ -28,7 +28,6 @@ Oracle Simulation (slow backend)
 
 ### Architecture Overview
 ![Architecture Diagram](images/architecture.png)
-(images/architecture.png)
 
 - L1 cache provides the fastest access
 - Redis acts as shared cache with expiration
@@ -179,6 +178,7 @@ Running backend services using Docker
 ## Conclusion
 
 This project demonstrates a real-world inspired backend caching system with performance optimization, observability, and fault-prevention mechanisms.
+
 
 
 
