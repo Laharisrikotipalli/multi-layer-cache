@@ -27,7 +27,6 @@ Oracle Simulation (slow backend)
 ---
 
 ### Architecture Overview
-<<<<<<< HEAD
 [Architecture](images/architecture.png)
 =======
 
@@ -180,6 +179,7 @@ Running backend services using Docker
 ## Conclusion
 
 This project demonstrates a real-world inspired backend caching system with performance optimization, observability, and fault-prevention mechanisms.
+
 
 
 
