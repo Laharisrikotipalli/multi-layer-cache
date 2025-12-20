@@ -160,7 +160,7 @@ View metrics
 curl http://localhost:8000/metrics
 ```
 ---
-## 📽️ Project Demo Video
+## Project Demo Video
 
 This video demonstrates:
 - Project structure and code organization
@@ -191,6 +191,7 @@ Running backend services using Docker
 ## Conclusion
 
 This project demonstrates a real-world inspired backend caching system with performance optimization, observability, and fault-prevention mechanisms.
+
 
 
 
